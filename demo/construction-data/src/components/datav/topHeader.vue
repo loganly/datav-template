@@ -3,7 +3,7 @@
     <dv-decoration-8 class="header-left-decoration" />
     <dv-decoration-5 class="header-center-decoration" />
     <dv-decoration-8 class="header-right-decoration" :reverse="true" />
-    <div class="center-title">施工养护综合数据</div>
+    <div class="center-title">设备巡检综合数据</div>
   </div>
 </template>
 
@@ -28,7 +28,8 @@ export default {
     margin-top: 30px;
   }
 
-  .header-left-decoration, .header-right-decoration {
+  .header-left-decoration,
+  .header-right-decoration {
     width: 25%;
     height: 60px;
   }
