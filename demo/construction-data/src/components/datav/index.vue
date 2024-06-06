@@ -1,6 +1,7 @@
 <template>
   <div id="data-view">
     <dv-full-screen-container>
+      <div v-show="showFullScreen" @click="toggleFullScreen" class="full-screen-button">点击全屏</div>
 
       <top-header />
 
@@ -47,10 +48,34 @@ export default {
     scrollBoard,
     cards
   },
-  data () {
-    return {}
+  mounted () {
+    console.log('DataView mounted')
+    document.addEventListener('fullscreenchange', (event) => {
+      if (document.fullscreenElement) {
+        this.showFullScreen = false
+      } else {
+        this.showFullScreen = true
+      }
+    })
   },
-  methods: {}
+  data () {
+    return {
+      showFullScreen: true
+    }
+  },
+  methods: {
+    toggleFullScreen () {
+      if (!document.fullscreenElement) {
+        // 进入全屏
+        document.documentElement.requestFullscreen()
+      } else {
+        // 退出全屏
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        }
+      }
+    }
+  }
 }
 </script>
 
@@ -67,6 +92,15 @@ export default {
     box-shadow: 0 0 3px blue;
     display: flex;
     flex-direction: column;
+  }
+
+  .full-screen-button {
+    position: absolute;
+    top: 33px;
+    right: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 9999;
   }
 
   .main-content {
