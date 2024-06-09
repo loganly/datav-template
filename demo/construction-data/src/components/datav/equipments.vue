@@ -124,7 +124,7 @@ export default {
 <style lang="less" scoped>
 .equipments-container {
     width: 100%;
-    height: 65%;
+    height: 100%;
     overflow: hidden;
     border-top: 2px solid rgba(1, 153, 209, 0.5);
     background-color: rgba(6, 30, 93, 0.5);

@@ -13,18 +13,14 @@
 
           <div class="block-top-bottom-content">
             <div class="block-top-content">
-              <!-- <rose-chart />
 
-              <water-level-chart />
-
-              <scroll-board /> -->
               <equipments />
               <water-level-chart />
-              <!-- <rose-chart /> -->
 
             </div>
 
-            <cards />
+            <!-- <cards /> -->
+            <scroll-board />
           </div>
         </div>
       </div>
@@ -38,8 +34,8 @@ import digitalFlop from './digitalFlop'
 import rankingBoard from './rankingBoard'
 // import roseChart from './roseChart'
 import waterLevelChart from './waterLevelChart'
-// import scrollBoard from './scrollBoard'
-import cards from './cards'
+import scrollBoard from './scrollBoard'
+// import cards from './cards'
 import equipments from './equipments'
 import { getDashboardDailyRecord } from '../../http/api'
 
@@ -51,8 +47,8 @@ export default {
     rankingBoard,
     // roseChart,
     waterLevelChart,
-    // scrollBoard,
-    cards,
+    scrollBoard,
+    // cards,
     equipments
   },
   mounted () {
@@ -137,7 +133,7 @@ export default {
   }
 
   .block-top-content {
-    height: 55%;
+    height: 40%;
     display: flex;
     flex-grow: 0;
     box-sizing: border-box;
