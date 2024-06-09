@@ -6,6 +6,7 @@
       <top-header />
 
       <div class="main-content">
+        <dv-decoration-7 style="width:200px;height:20px;">今日报修单数量</dv-decoration-7>
         <digital-flop />
 
         <div class="block-left-right-content">
@@ -13,11 +14,15 @@
 
           <div class="block-top-bottom-content">
             <div class="block-top-content">
-              <rose-chart />
+              <!-- <rose-chart />
 
               <water-level-chart />
 
-              <scroll-board />
+              <scroll-board /> -->
+              <equipments />
+              <water-level-chart />
+              <!-- <rose-chart /> -->
+
             </div>
 
             <cards />
@@ -32,10 +37,11 @@
 import topHeader from './topHeader'
 import digitalFlop from './digitalFlop'
 import rankingBoard from './rankingBoard'
-import roseChart from './roseChart'
+// import roseChart from './roseChart'
 import waterLevelChart from './waterLevelChart'
-import scrollBoard from './scrollBoard'
+// import scrollBoard from './scrollBoard'
 import cards from './cards'
+import equipments from './equipments'
 import { getDashboardDailyRecord } from '../../http/api'
 
 export default {
@@ -44,10 +50,11 @@ export default {
     topHeader,
     digitalFlop,
     rankingBoard,
-    roseChart,
+    // roseChart,
     waterLevelChart,
-    scrollBoard,
-    cards
+    // scrollBoard,
+    cards,
+    equipments
   },
   mounted () {
     console.log('DataView mounted')
