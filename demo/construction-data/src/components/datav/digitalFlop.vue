@@ -20,22 +20,24 @@
 </template>
 
 <script>
+import { getDashboardRepairRecord } from '../../http/api'
+
 export default {
   name: 'DigitalFlop',
+  mounted () {
+    const { fetchData } = this
+
+    fetchData()
+
+    setInterval(fetchData, 10000)
+  },
   data () {
     return {
-      digitalFlopData: []
-    }
-  },
-  methods: {
-    createData () {
-      const { randomExtend } = this
-
-      this.digitalFlopData = [
+      digitalFlopData: [
         {
-          title: '管养里程',
+          title: '总报修数量',
           number: {
-            number: [randomExtend(20000, 30000)],
+            number: [0],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -43,12 +45,12 @@ export default {
               fontWeight: 'bold'
             }
           },
-          unit: '公里'
+          unit: '个'
         },
         {
-          title: '桥梁',
+          title: '维修申请',
           number: {
-            number: [randomExtend(20, 30)],
+            number: [0],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -56,12 +58,12 @@ export default {
               fontWeight: 'bold'
             }
           },
-          unit: '座'
+          unit: '个'
         },
         {
-          title: '涵洞隧道',
+          title: '维修中',
           number: {
-            number: [randomExtend(20, 30)],
+            number: [0],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -72,9 +74,35 @@ export default {
           unit: '个'
         },
         {
-          title: '匝道',
+          title: '返工中',
           number: {
-            number: [randomExtend(10, 20)],
+            number: [0],
+            content: '{nt}',
+            textAlign: 'right',
+            style: {
+              fill: '#a227f4',
+              fontWeight: 'bold'
+            }
+          },
+          unit: '个'
+        },
+        {
+          title: '已完成',
+          number: {
+            number: [0],
+            content: '{nt}',
+            textAlign: 'right',
+            style: {
+              fill: '#8ef427',
+              fontWeight: 'bold'
+            }
+          },
+          unit: '个'
+        },
+        {
+          title: '内部维修',
+          number: {
+            number: [0],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -85,61 +113,9 @@ export default {
           unit: '个'
         },
         {
-          title: '隧道',
+          title: '外派维修',
           number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#f46827',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '服务区',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#40faee',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '收费站',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#4d99fc',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '超限站',
-          number: {
-            number: [randomExtend(5, 10)],
-            content: '{nt}',
-            textAlign: 'right',
-            style: {
-              fill: '#f46827',
-              fontWeight: 'bold'
-            }
-          },
-          unit: '个'
-        },
-        {
-          title: '停车区',
-          number: {
-            number: [randomExtend(5, 10)],
+            number: [0],
             content: '{nt}',
             textAlign: 'right',
             style: {
@@ -150,21 +126,110 @@ export default {
           unit: '个'
         }
       ]
-    },
-    randomExtend (minNum, maxNum) {
-      if (arguments.length === 1) {
-        return parseInt(Math.random() * minNum + 1, 10)
-      } else {
-        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10)
-      }
     }
   },
-  mounted () {
-    const { createData } = this
+  methods: {
+    async fetchData () {
+      const { data } = await getDashboardRepairRecord(2)
+      if (data && data.length > 0) {
+        const { totalRepairs, pendingRepairs, ongoingRepairs, reworkRepairs, finishedRepairs, externalRepairs, internalRepairs } = data[0]
+        this.digitalFlopData = [
+          {
+            title: '总报修数量',
+            number: {
+              number: [totalRepairs],
+              content: '{nt}',
+              textAlign: 'right',
+              style: {
+                fill: '#4d99fc',
+                fontWeight: 'bold'
+              }
+            },
+            unit: '个'
+          },
+          {
+            title: '维修申请',
+            number: {
+              number: [pendingRepairs],
+              content: '{nt}',
+              textAlign: 'right',
+              style: {
+                fill: '#f46827',
+                fontWeight: 'bold'
+              }
+            },
+            unit: '个'
+          },
+          {
+            title: '维修中',
+            number: {
+              number: [ongoingRepairs],
+              content: '{nt}',
+              textAlign: 'right',
+              style: {
+                fill: '#40faee',
+                fontWeight: 'bold'
+              }
+            },
+            unit: '个'
+          },
+          {
+            title: '返工中',
+            number: {
+              number: [reworkRepairs],
+              content: '{nt}',
+              textAlign: 'right',
+              style: {
+                fill: '#a227f4',
+                fontWeight: 'bold'
+              }
+            },
+            unit: '个'
+          },
+          {
+            title: '已完成',
+            number: {
+              number: [finishedRepairs],
+              content: '{nt}',
+              textAlign: 'right',
+              style: {
+                fill: '#8ef427',
+                fontWeight: 'bold'
+              }
+            },
+            unit: '个'
+          },
+          {
+            title: '内部维修',
+            number: {
+              number: [internalRepairs],
+              content: '{nt}',
+              textAlign: 'right',
+              style: {
+                fill: '#4d99fc',
+                fontWeight: 'bold'
+              }
+            },
+            unit: '个'
+          },
+          {
+            title: '外派维修',
+            number: {
+              number: [externalRepairs],
+              content: '{nt}',
+              textAlign: 'right',
+              style: {
+                fill: '#40faee',
+                fontWeight: 'bold'
+              }
+            },
+            unit: '个'
+          }
 
-    createData()
+        ]
+      }
+    }
 
-    setInterval(createData, 30000)
   }
 }
 </script>
@@ -188,7 +253,7 @@ export default {
   }
 
   .digital-flop-item {
-    width: 11%;
+    width: 14.28%;
     height: 80%;
     display: flex;
     flex-direction: column;
