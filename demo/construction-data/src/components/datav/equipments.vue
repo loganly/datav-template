@@ -15,6 +15,8 @@
                                     <div class="title">巡检：<span :class="[`${transformCheckStatusClass(equipment.checkStatus)}`]">{{transformCheckStatusText(equipment.checkStatus)}}</span></div>
                                 </div>
                             </div>
+                            <div class="equipments-card" v-for="i in 5-equipments.length" :key="i" style="border: none;"></div>
+
                         </div>
                    </div>
                 </vue-seamless-scroll>
@@ -122,12 +124,15 @@ export default {
 <style lang="less" scoped>
 .equipments-container {
     width: 100%;
+    height: 65%;
+    overflow: hidden;
     border-top: 2px solid rgba(1, 153, 209, 0.5);
     background-color: rgba(6, 30, 93, 0.5);
     .content {
+        height: 100%;
         padding: 20px;
         .warp {
-            height: 320px;
+            height: 90%;
             width: 100%;
             margin: 0 auto;
             overflow: hidden;
@@ -135,9 +140,9 @@ export default {
                 width: 100%;
                 .card-list {
                     display: flex;
-                    gap: 0 15px;
+                    gap: 0 10px;
                     .equipments-card {
-                        width: 170px;
+                        width: 20%;
                         margin: 10px 0 0;
                         padding: 10px;
                         font-size: 12px;
@@ -146,6 +151,8 @@ export default {
                         border-radius: 5px;
                         display: flex;
                         align-items: center;
+                        justify-content:flex-start;
+                        gap: 0 10px;
                         .icon {
                             width: 30px;
                             height: 30px;

@@ -237,7 +237,7 @@ export default {
 <style lang="less">
 #digital-flop {
   position: relative;
-  height: 15%;
+  height: 10%;
   flex-shrink: 0;
   display: flex;
   justify-content: space-between;
@@ -265,7 +265,7 @@ export default {
 
   .digital-flop-title {
     font-size: 20px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
 
   .digital-flop {

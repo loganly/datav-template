@@ -6,7 +6,6 @@
       <top-header />
 
       <div class="main-content">
-        <dv-decoration-7 style="width:200px;height:20px;">今日报修单数量</dv-decoration-7>
         <digital-flop />
 
         <div class="block-left-right-content">
