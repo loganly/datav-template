@@ -6,20 +6,20 @@
       <top-header />
 
       <div class="main-content">
-        <digital-flop />
+        <digital-flop :deptId="deptId"/>
 
         <div class="block-left-right-content">
-          <ranking-board />
+          <ranking-board  :deptId="deptId"/>
 
           <div class="block-top-bottom-content">
             <div class="block-top-content">
 
-              <equipments />
-              <check-group />
+              <equipments  :dept-id="deptId"/>
+              <check-group  :dept-id="deptId"/>
 
             </div>
 
-            <scroll-board />
+            <scroll-board  :dept-id="deptId"/>
           </div>
         </div>
       </div>
@@ -47,7 +47,8 @@ export default {
     equipments
   },
   mounted () {
-    console.log('DataView mounted')
+    this.deptId = new URLSearchParams(document.location.search).get('deptId')
+    console.log('DataView mounted', this.deptId)
     document.addEventListener('fullscreenchange', (event) => {
       if (document.fullscreenElement) {
         this.showFullScreen = false
@@ -59,6 +60,7 @@ export default {
   },
   data () {
     return {
+      deptId: '',
       showFullScreen: true
     }
   },

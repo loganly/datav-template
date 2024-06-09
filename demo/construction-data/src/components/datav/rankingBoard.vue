@@ -10,6 +10,11 @@
 import { getDashboardChecks } from '../../http/api'
 export default {
   name: 'RankingBoard',
+  props: {
+    deptId: {
+      type: String
+    }
+  },
   mounted () {
     const { fetchData } = this
     fetchData()
@@ -28,7 +33,7 @@ export default {
   },
   methods: {
     async fetchData () {
-      const { data } = await getDashboardChecks(2)
+      const { data } = await getDashboardChecks(this.deptId)
       // console.log(data)
       const arr = data.map(item => {
         return {

@@ -10,6 +10,11 @@ import { getDashboardRepairs } from '../../http/api'
 
 export default {
   name: 'ScrollBoard',
+  props: {
+    deptId: {
+      type: String
+    }
+  },
   mounted () {
     const { fetchData } = this
     fetchData()
@@ -33,8 +38,7 @@ export default {
   },
   methods: {
     async fetchData () {
-      const { data } = await getDashboardRepairs(2)
-      console.log('data = ', data)
+      const { data } = await getDashboardRepairs(this.deptId)
 
       const arr = data.map(item => {
         return [
@@ -48,7 +52,6 @@ export default {
         ]
       })
       this.config.data = arr
-      console.log(arr)
     }
   }
 }

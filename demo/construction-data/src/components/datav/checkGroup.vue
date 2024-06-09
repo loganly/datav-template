@@ -16,6 +16,11 @@ import { getDashboardDailyRecord } from '../../http/api'
 
 export default {
   name: 'CheckGroup',
+  props: {
+    deptId: {
+      type: String
+    }
+  },
   mounted () {
     const { fetchData, looper } = this
     fetchData()
@@ -40,7 +45,7 @@ export default {
   },
   methods: {
     async fetchData () {
-      const { data } = await getDashboardDailyRecord(2)
+      const { data } = await getDashboardDailyRecord(this.deptId)
       this.listData = data
       if (!this.hasInit) {
         this.looper()

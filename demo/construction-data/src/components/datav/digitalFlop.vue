@@ -27,6 +27,11 @@ import { getDashboardRepairRecord } from '../../http/api'
 
 export default {
   name: 'DigitalFlop',
+  props: {
+    deptId: {
+      type: String
+    }
+  },
   mounted () {
     const { fetchData } = this
 
@@ -133,7 +138,7 @@ export default {
   },
   methods: {
     async fetchData () {
-      const { data } = await getDashboardRepairRecord(2)
+      const { data } = await getDashboardRepairRecord(this.deptId)
       if (data && data.length > 0) {
         const { totalRepairs, pendingRepairs, ongoingRepairs, reworkRepairs, finishedRepairs, externalRepairs, internalRepairs } = data[0]
         this.digitalFlopData = [

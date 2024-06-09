@@ -32,6 +32,11 @@ import { getDashboardEquipments } from '../../http/api'
 
 export default {
   name: 'Example01Basic',
+  props: {
+    deptId: {
+      type: String
+    }
+  },
   components: {
     vueSeamlessScroll
   },
@@ -51,7 +56,7 @@ export default {
   },
   methods: {
     async fetchData () {
-      const { data } = await getDashboardEquipments(2)
+      const { data } = await getDashboardEquipments(this.deptId)
       this.equipmentList = this.chunkArray(data, 5)
     },
     chunkArray (array, chunkSize) {
