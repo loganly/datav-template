@@ -19,10 +19,10 @@ export default {
     return {
       config: {
         data: [],
-        rowNum: 15,
-        valueFormatter ({ value }) {
-          return `<span style="color: red; font-size: 14px;">${value}</span>`
-        }
+        rowNum: 15
+        // valueFormatter ({ value }) {
+        //   return `<span style="color: red; font-size: 14px;">${value}</span>`
+        // }
       }
     }
   },

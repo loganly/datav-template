@@ -15,7 +15,7 @@
             <div class="block-top-content">
 
               <equipments />
-              <water-level-chart />
+              <check-group />
 
             </div>
 
@@ -31,7 +31,7 @@
 import topHeader from './topHeader'
 import digitalFlop from './digitalFlop'
 import rankingBoard from './rankingBoard'
-import waterLevelChart from './waterLevelChart'
+import checkGroup from './checkGroup'
 import scrollBoard from './scrollBoard'
 import equipments from './equipments'
 import { getDashboardDailyRecord } from '../../http/api'
@@ -42,7 +42,7 @@ export default {
     topHeader,
     digitalFlop,
     rankingBoard,
-    waterLevelChart,
+    checkGroup,
     scrollBoard,
     equipments
   },

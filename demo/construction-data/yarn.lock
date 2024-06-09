@@ -760,10 +760,10 @@
   dependencies:
     "@babel/polyfill" "^7.4.4"
 
-"@jiaminghi/data-view@^2.4.4":
-  version "2.4.4"
-  resolved "https://registry.npm.taobao.org/@jiaminghi/data-view/download/@jiaminghi/data-view-2.4.4.tgz#b7c7fb45584d4639b6f08ba7397da23c8520a70a"
-  integrity sha1-t8f7RVhNRjm28IunOX2iPIUgpwo=
+"@jiaminghi/data-view@^2.9.9":
+  version "2.10.0"
+  resolved "https://registry.npmjs.org/@jiaminghi/data-view/-/data-view-2.10.0.tgz#2146d8fc71b9f24be808238ca050ddb7a4c8949f"
+  integrity sha512-Cud2MTiMcqc5k2KWabR/svuVQmXHANqURo+yj40370/LdI/gyUJ6LG203hWXEnT1nMCeiv/SLVmxv3PXLScCeA==
   dependencies:
     "@babel/runtime" "^7.5.5"
     "@jiaminghi/charts" "*"
