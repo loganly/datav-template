@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.4.4",
+    "axios": "^1.7.2",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "vue": "^2.6.10"

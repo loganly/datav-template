@@ -36,6 +36,7 @@ import roseChart from './roseChart'
 import waterLevelChart from './waterLevelChart'
 import scrollBoard from './scrollBoard'
 import cards from './cards'
+import { getDashboardDailyRecord } from '../../http/api'
 
 export default {
   name: 'DataView',
@@ -57,6 +58,7 @@ export default {
         this.showFullScreen = true
       }
     })
+    this.fetchedData()
   },
   data () {
     return {
@@ -64,6 +66,11 @@ export default {
     }
   },
   methods: {
+    async fetchedData () {
+      console.log('fetchedData')
+      const resp = await getDashboardDailyRecord(2)
+      console.log('fetchedData resp', resp)
+    },
     toggleFullScreen () {
       if (!document.fullscreenElement) {
         // 进入全屏
