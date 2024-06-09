@@ -21,6 +21,7 @@
                    </div>
                 </vue-seamless-scroll>
             </div>
+            <dv-loading v-else>Loading...</dv-loading>
         </dv-border-box-1>
     </div>
   </template>

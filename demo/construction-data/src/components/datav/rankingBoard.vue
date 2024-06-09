@@ -1,55 +1,58 @@
 <template>
   <div id="ranking-board">
-    <div class="ranking-board-title">巡查上报记录数量</div>
-    <dv-scroll-ranking-board :config="config" />
+    <div class="ranking-board-title">巡检设备状态</div>
+    <dv-scroll-ranking-board v-if="config.data.length > 0" :config="config" />
+
   </div>
 </template>
 
 <script>
+import { getDashboardChecks } from '../../http/api'
 export default {
   name: 'RankingBoard',
+  mounted () {
+    const { fetchData } = this
+    fetchData()
+    setInterval(fetchData, 15000)
+  },
   data () {
     return {
       config: {
-        data: [
-          {
-            name: '日常养护',
-            value: 55
-          },
-          {
-            name: '交通事故',
-            value: 120
-          },
-          {
-            name: '路面',
-            value: 78
-          },
-          {
-            name: '桥通',
-            value: 66
-          },
-          {
-            name: '计日工',
-            value: 80
-          },
-          {
-            name: '路基',
-            value: 45
-          },
-          {
-            name: '交安设施',
-            value: 29
-          },
-          {
-            name: '除雪',
-            value: 29
-          },
-          {
-            name: '绿化',
-            value: 29
-          }
-        ],
-        rowNum: 9
+        data: [],
+        rowNum: 15,
+        valueFormatter ({ value }) {
+          return `<span style="color: red; font-size: 14px;">${value}</span>`
+        }
+      }
+    }
+  },
+  methods: {
+    async fetchData () {
+      const { data } = await getDashboardChecks(2)
+      // console.log(data)
+      const arr = data.map(item => {
+        return {
+          name: `${item.equipmentName}(${item.equipmentNo})`,
+          value: this.transformCheckStatusText(item.equipmentResult)
+        }
+      })
+      // console.log('arr =', arr)
+      this.config.data = arr
+      // this.config.data = arr.slice(0, 110)
+      // console.log('this.config.data =', this.config.data)
+    },
+    transformCheckStatusText (status) {
+      switch (status) {
+        case 'ID':
+          return '未检查'
+        case 'CD':
+          return '已检查'
+        case 'ER':
+          return '异常'
+        case 'RC':
+          return '重新检查'
+        default:
+          return '未知'
       }
     }
   }
@@ -59,6 +62,7 @@ export default {
 <style lang="less">
 #ranking-board {
   width: 20%;
+  height: 1000px;
   box-shadow: 0 0 3px blue;
   display: flex;
   flex-direction: column;

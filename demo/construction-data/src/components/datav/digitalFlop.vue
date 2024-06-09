@@ -1,6 +1,7 @@
 <template>
   <div id="digital-flop">
-    <div
+    <template v-if="digitalFlopData.length">
+      <div
       class="digital-flop-item"
       v-for="item in digitalFlopData"
       :key="item.title"
@@ -14,6 +15,8 @@
           <div class="unit">{{ item.unit }}</div>
       </div>
     </div>
+    </template>
+    <dv-loading v-else>Loading...</dv-loading>
 
     <dv-decoration-10 />
   </div>

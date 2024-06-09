@@ -1,6 +1,7 @@
 <template>
   <div id="scroll-board">
     <dv-scroll-board v-if="config.data.length > 0" :config="config" />
+    <dv-loading v-else>Loading...</dv-loading>
   </div>
 </template>
 

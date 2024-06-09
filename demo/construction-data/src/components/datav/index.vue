@@ -19,7 +19,6 @@
 
             </div>
 
-            <!-- <cards /> -->
             <scroll-board />
           </div>
         </div>
@@ -32,10 +31,8 @@
 import topHeader from './topHeader'
 import digitalFlop from './digitalFlop'
 import rankingBoard from './rankingBoard'
-// import roseChart from './roseChart'
 import waterLevelChart from './waterLevelChart'
 import scrollBoard from './scrollBoard'
-// import cards from './cards'
 import equipments from './equipments'
 import { getDashboardDailyRecord } from '../../http/api'
 
@@ -45,10 +42,8 @@ export default {
     topHeader,
     digitalFlop,
     rankingBoard,
-    // roseChart,
     waterLevelChart,
     scrollBoard,
-    // cards,
     equipments
   },
   mounted () {
