@@ -2,12 +2,15 @@
   <div id="water-level-chart">
     <div class="water-level-chart-title">巡检班组检查情况</div>
 
-    <dv-decoration-11 style="width:100%;height:60px;margin-top:7px">{{ currentData.groupName }}</dv-decoration-11>
+    <div v-if="currentData.groupName">
+      <dv-decoration-11 style="width:100%;height:60px;margin-top:7px">{{ currentData.groupName }}</dv-decoration-11>
       <div class="chart-container">
         <dv-border-box-13 style="height: 230px;">
           <dv-capsule-chart v-if="config.data.length > 0" :config="config" style="width:90%;height:200px;margin:17px" />
         </dv-border-box-13>
       </div>
+    </div>
+    <dv-loading v-else>Loading...</dv-loading>
   </div>
 </template>
 

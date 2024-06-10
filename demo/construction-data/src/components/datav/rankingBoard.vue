@@ -2,7 +2,7 @@
   <div id="ranking-board">
     <div class="ranking-board-title">巡检设备状态</div>
     <dv-scroll-ranking-board v-if="config.data.length > 0" :config="config" />
-
+    <dv-loading v-else style="flex: 0; margin: 100px auto;">Loading...</dv-loading>
   </div>
 </template>
 
@@ -25,9 +25,6 @@ export default {
       config: {
         data: [],
         rowNum: 15
-        // valueFormatter ({ value }) {
-        //   return `<span style="color: red; font-size: 14px;">${value}</span>`
-        // }
       }
     }
   },
