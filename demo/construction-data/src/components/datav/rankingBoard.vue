@@ -2,14 +2,19 @@
   <div id="ranking-board">
     <div class="ranking-board-title">巡检设备状态</div>
     <dv-scroll-ranking-board v-if="config.data.length > 0" :config="config" />
-    <dv-loading v-else style="flex: 0; margin: 100px auto;">Loading...</dv-loading>
+      <noData v-else style="flex: 0; margin: 200px auto;"/>
+    <!-- <dv-loading v-else style="flex: 0; margin: 100px auto;">Loading...</dv-loading> -->
   </div>
 </template>
 
 <script>
+import noData from './noData'
 import { getDashboardChecks } from '../../http/api'
 export default {
   name: 'RankingBoard',
+  components: {
+    noData
+  },
   props: {
     deptId: {
       type: String

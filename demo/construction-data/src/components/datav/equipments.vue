@@ -21,12 +21,15 @@
                    </div>
                 </vue-seamless-scroll>
             </div>
-            <dv-loading v-else>Loading...</dv-loading>
+            <noData v-else />
+
+            <!-- <dv-loading v-else>Loading...</dv-loading> -->
         </dv-border-box-1>
     </div>
   </template>
 
 <script>
+import noData from './noData'
 import vueSeamlessScroll from 'vue-seamless-scroll'
 import { getDashboardEquipments } from '../../http/api'
 
@@ -38,7 +41,8 @@ export default {
     }
   },
   components: {
-    vueSeamlessScroll
+    vueSeamlessScroll,
+    noData
   },
   mounted () {
     const { fetchData } = this

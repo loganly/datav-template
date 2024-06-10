@@ -1,15 +1,20 @@
 <template>
   <div id="scroll-board">
     <dv-scroll-board v-if="config.data.length > 0" :config="config" />
-    <dv-loading v-else>Loading...</dv-loading>
+    <noData v-else />
+
   </div>
 </template>
 
 <script>
 import { getDashboardRepairs } from '../../http/api'
+import noData from './noData'
 
 export default {
   name: 'ScrollBoard',
+  components: {
+    noData
+  },
   props: {
     deptId: {
       type: String

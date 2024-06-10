@@ -10,15 +10,20 @@
         </dv-border-box-13>
       </div>
     </div>
-    <dv-loading v-else>Loading...</dv-loading>
+    <noData v-else />
+    <!-- <dv-loading v-else>Loading...</dv-loading> -->
   </div>
 </template>
 
 <script>
+import noData from './noData'
 import { getDashboardDailyRecord } from '../../http/api'
 
 export default {
   name: 'CheckGroup',
+  components: {
+    noData
+  },
   props: {
     deptId: {
       type: String
