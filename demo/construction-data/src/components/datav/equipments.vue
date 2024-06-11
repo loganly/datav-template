@@ -172,7 +172,7 @@ export default {
                         }
                         .info {
                             color: #fff;
-                            margin-left: 20px;
+                            margin-left: 15px;
                             .title {
                                 color: #f4f4f4;
                             }

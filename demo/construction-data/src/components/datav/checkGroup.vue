@@ -45,7 +45,7 @@ export default {
       listData: [],
       config: {
         data: [],
-        colors: ['#00baff', '#3de7c9', '#ffc530', '#469f4b'],
+        colors: ['#00baff', '#469f4b', '#ffc530', '#c44b4b'],
         unit: '个',
         showValue: true
       }
@@ -71,10 +71,10 @@ export default {
       }
       this.config.data = []
       this.$nextTick(() => {
-        this.config.data.push({ name: '任务总数', value: this.currentData.totalTasks })
-        this.config.data.push({ name: '已完成数', value: this.currentData.completedTasks })
-        this.config.data.push({ name: '待检查数', value: this.currentData.pendingTasks })
-        this.config.data.push({ name: '异常任务', value: this.currentData.errorTasks })
+        this.config.data.push({ name: '巡检总设备数', value: this.currentData.totalTasks })
+        this.config.data.push({ name: '完成巡检设备数', value: this.currentData.completedTasks })
+        this.config.data.push({ name: '待巡检设备数', value: this.currentData.pendingTasks })
+        this.config.data.push({ name: '巡检异常设备数', value: this.currentData.errorTasks })
       })
     }
   }
