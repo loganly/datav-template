@@ -82,7 +82,7 @@ export default {
           unit: '个'
         },
         {
-          title: '返工中',
+          title: '返修',
           number: {
             number: [0],
             content: '{nt}',

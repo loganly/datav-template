@@ -5,9 +5,15 @@
     <div v-if="currentData.groupName">
       <dv-decoration-11 style="width:100%;height:60px;margin-top:7px">{{ currentData.groupName }}</dv-decoration-11>
       <div class="chart-container">
-        <dv-border-box-13 style="height: 230px;">
+        <!-- <dv-border-box-13 style="height: 230px;">
           <dv-capsule-chart v-if="config.data.length > 0" :config="config" style="width:90%;height:200px;margin:17px" />
-        </dv-border-box-13>
+        </dv-border-box-13> -->
+        <div v-if="config.data.length > 0" class="data-container" >
+          <div class="data-item" v-for="(item, index) in config.data" :key="index">
+            <div class="name">{{ item.name }}</div>
+            <div class="value" :style="{color: config.colors[index]}">{{ item.value }}</div>
+          </div>
+        </div>
       </div>
     </div>
     <noData v-else />
@@ -105,6 +111,24 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .data-container {
+    width:90%;height:200px;margin:17px;
+    .data-item {
+       display: flex;
+       justify-content: space-around;
+       align-items: center;
+       margin-bottom: 20px;
+       .name {
+          width: 200px;
+         font-size: 16px;
+       }
+       .value {
+         font-size: 26px;
+         font-weight: bold;
+        }
+    }
   }
 
 }

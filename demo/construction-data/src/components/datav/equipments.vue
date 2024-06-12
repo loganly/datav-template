@@ -85,13 +85,13 @@ export default {
     },
     transformRepairStatusClass (status) {
       switch (status) {
-        case '维修申请':
+        case '待维修':
           return 'BROKEN'
         case '维修中':
           return 'MAINTAIN'
-        case '已维修':
+        case '待确认':
           return 'MAINTAIN'
-        case '返工':
+        case '返修':
           return 'MAINTAIN'
         case '完成':
           return 'NORMAL'

@@ -39,8 +39,8 @@ export default {
       // console.log(data)
       const arr = data.map(item => {
         return {
-          name: `${item.equipmentName}(${item.equipmentNo})`,
-          value: this.transformCheckStatusText(item.equipmentResult)
+          name: `<div style="display: flex; justify-content: space-between; align-items: center;"><div>${item.equipmentName}(${item.equipmentNo})</div><div style="color: ${this.transformCheckStatusClass(item.equipmentResult)}; font-weight: bold;">${this.transformCheckStatusText(item.equipmentResult)}</div></div>`,
+          value: ''
         }
       })
       // console.log('arr =', arr)
@@ -60,6 +60,20 @@ export default {
           return '重新检查'
         default:
           return '未知'
+      }
+    },
+    transformCheckStatusClass (status) {
+      switch (status) {
+        case 'ID':
+          return '#909399'
+        case 'CD':
+          return '#67C23A'
+        case 'ER':
+          return '#E6A23C'
+        case 'RC':
+          return '#F56C6C'
+        default:
+          return '#fff'
       }
     }
   }
